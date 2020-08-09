@@ -1,0 +1,210 @@
+EXERCISE 1:
+
+
+1)
+SELECT title, book_num FROM book_file b WHERE b.year>=1984;
+
+2)
+SELECT * FROM book_file WHERE year<1984 OR year>1986;
+
+3)
+SELECT pubname, pubaddress FROM publisher ORDER BY pubname DESC;
+
+4)
+SELECT * FROM book_file WHERE year between 1985 AND 1987;
+
+5)
+SELECT COUNT(book_num) FROM book_file;
+
+6)
+SELECT MAX(edition) FROM book_file;
+
+7)
+SELECT book_num, topic, title FROM book_file WHERE topic LIKE 'data%';
+
+8)
+SELECT pubname, pubcode, pubaddress FROM publisher WHERE pubname LIKE 'A%' AND pubcode<'p5';
+
+9)
+SELECT DISTINCT topic FROM book_file;
+=================================================================================================
+EXERCISE 2:
+
+
+1)
+CREATE TABLE employee
+(
+emp_no  VARCHAR(3)  PRIMARY KEY,
+name    VARCHAR(10) NOT NULL,
+dept_no VARCHAR(3)  NOT NULL
+);
+
+2)
+INSERT INTO employee 
+VALUES('E1','Sandy','D1');
+
+3)
+ALTER TABLE employee 
+ADD room_no VARCHAR(8);
+
+4)
+UPDATE employee 
+SET room_no='R1' 
+WHERE dept_no='D2';
+
+5)
+UPDATE employee SET room_no='R2' WHERE emp_no='E6';
+UPDATE employee SET room_no='R3' WHERE emp_no='E7';
+UPDATE employee SET room_no='R4' WHERE emp_no='E8';
+
+6)
+UPDATE employee 
+SET name='Fido' 
+WHERE name='MOG';
+
+7)
+ALTER TABLE employee DROP COLUMN name;
+
+8)
+DELETE FROM employee WHERE dept_no='D2';
+======================================================================================================
+EXERCISE 3:
+
+1)
+SELECT b.brachname FROM branch b
+INNER JOIN area a 
+ON b.area_code=a.area_code 
+WHERE manager='Bloggs'; 
+
+2)
+SELECT AVG(product_price) FROM product;
+
+3)
+SELECT MAX(product_price) FROM product;
+
+4)
+SELECT b.town FROM branch b 
+JOIN stock s 
+ON b.branch_code=s.branch_code
+WHERE p.prod_code='Posh-dress';
+
+5)
+SELECT p.prod_desc, b.branchname FROM Product p, Branch b, Stock s 
+WHERE p.product_code=s.product_code 
+AND b.branch_code=s.branch_code 
+AND s.stock_quant<4;
+=======================================================================================================
+SQL EXERCISES
+
+
+1)
+SELECT empNum, empFirstName, empLastName FROM employee;
+
+2)
+SELECT * FROM computer;
+
+3)
+SELECT mfgModel 
+FROM computer 
+WHERE proType='486DX';
+
+4)
+SELECT tagNum 
+FROM pc 
+WHERE empNum=124 
+AND location='Home';
+
+5)
+SELECT compId, mfgModel 
+FROM computer 
+WHERE proType='486DX' 
+OR proType='486DX2';
+
+6)
+SELECT tagNum, compId 
+FROM pc 
+WHERE location<>'Home';
+
+7)
+SELECT tagNum, packId 
+FROM software 
+WHERE softCost 
+BETWEEN 201 AND 499;
+
+8)
+SELECT tagNum, packId, softCost*0.95 AS discounted_software_cost 
+FROM software;
+
+9)
+SELECT tagNum, packID, softCost*0.95 AS discounted_software_cost 
+FROM software 
+WHERE discounted_software_cost>=400;
+
+10)
+SELECT packId, packName 
+FROM package 
+WHERE packType 
+IN ('database','spreadsheet');
+
+11)
+SELECT empNum, empPhone 
+FROM Employee 
+WHERE emplLastName='Feinstein';
+
+12)
+SELECT * FROM package ORDER BY packName;
+
+13)
+SELECT * FROM package ORDER BY packCost DESC;
+
+14)
+SELECT * FROM package WHERE packCost>400;
+
+15)
+SELECT AVG(packCost) 
+FROM package 
+WHERE packType='Word Processig';
+
+16)
+SELECT packId, packName 
+FROM package 
+WHERE packCost>AVG(packCost);
+
+17)
+SELECT p.tagNum, c.compId, c.mfgName 
+FROM pc p, computer c 
+WHERE p.compId=c.compId;
+
+18)
+SELECT p.tagNum, c.compID, c.mfgName 
+FROM pc p, computer c 
+WHERE p.CompId=c.CompId 
+AND p.empNum=124;
+
+19)
+SELECT e.empNum, e.empName 
+FROM employee e, pc 
+WHERE e.empNum=pc.empNum 
+AND pc.location<>'Home';
+
+20)
+SELECT pc.tagNum, pc.compID, p.packName, p.packVer, p.packType 
+FROM pc, package p, software s 
+WHERE pc.tagNum=s.tagNum 
+AND p.packId=s.packId;
+=========================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
